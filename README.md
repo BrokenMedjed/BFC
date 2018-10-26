@@ -8,8 +8,8 @@ with some programs, and I have no idea how to fix it :p. I tested it
 using a
 [Sierpinski Triangle](http://www.hevanet.com/cristofd/brainfuck/sierpinski.b)
 program and a
-[Mandelbrot set viewer](https://github.com/ErikDubbelboer/brainfuck-jit/blob/master/mandelbrot.bf)
-; the former worked, the latter didn't.
+[Mandelbrot set viewer](https://github.com/ErikDubbelboer/brainfuck-jit/blob/master/mandelbrot.bf);
+the former worked, the latter didn't.
 The compiler works fine though, with every program.<br /><br />
 This thing is probably insecure to use compared to some implementations,
 considering the compiler doesn't have any protections against pointer
