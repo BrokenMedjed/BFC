@@ -1,6 +1,6 @@
 # BFC - BrainFuck Compiler
 
-<strong>Coming in with the creative names again, medjed. -r</strong>
+<strong>Coming in with the creative names again, medjed. -r</strong><br />
 Anyways, this is mainly a translator for Brainfuck, that
 generates 64-bit NASM code (and compiles it for you if you want). It does
 have an interpreter, but it's experimental and doesn't work
