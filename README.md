@@ -20,6 +20,10 @@ normal brainfuck rules; if you have several consequent IN operators
 (commas), all of them are going to be read at once and copied in that
 order into consequent cells, beginning at the current address of the
 pointer.<br />
+
+## Dependencies
+basically, nasm and gcc.<br />
+
 ## Compiling
 Use any C++14 (or 11?) compatible compiler.
 I use g++:
@@ -31,7 +35,6 @@ I've included my types header in this repo, the reason why I use it is
 that writing "U32" is cleaner than writing "uint32_t" :3<br />
 
 ## Usage
-
 Run
 ```
 bfc -h
