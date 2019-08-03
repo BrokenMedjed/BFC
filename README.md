@@ -2,9 +2,8 @@
 
 <strong>Coming in with the creative names again, medjed. -r</strong><br />
 This is a compiler/translator for Brainfuck, that generates 64-bit NASM code
-(and assembles it for you using NASM if you want). I compiled these:
-[Sierpinski Triangle](http://www.hevanet.com/cristofd/brainfuck/sierpinski.b), [Mandelbrot set viewer](https://github.com/ErikDubbelboer/brainfuck-jit/blob/master/mandelbrot.bf);
-Both work fine, so I'm assuming it'll work with every program.<br /><br />
+(and assembles it for you using NASM if you want). I compiled a [Sierpinski Triangle](http://www.hevanet.com/cristofd/brainfuck/sierpinski.b) and a [Mandelbrot set viewer](https://github.com/ErikDubbelboer/brainfuck-jit/blob/master/mandelbrot.bf);
+both work fine, so I'm assuming it'll work with every program.<br /><br />
 This is probably insecure to use compared to some implementations,
 considering this doesn't have any checks against pointer
 decrements/increments or input reads that go out of bounds.<br /><br />
