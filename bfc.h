@@ -88,6 +88,5 @@ public:
 	I8 parse();
 	U0 clear();
 	U0 dump_ir(FILE *f = stdout);
-	I8 interp(FILE *f = stdout);
 	U0 nasm64(FILE *f = stdout);
 };

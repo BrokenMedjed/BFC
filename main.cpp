@@ -9,14 +9,13 @@ extern "C" {
 #include <libgen.h>
 }
 
-const I8 *usage_short = "usage: %s [-h|-s|-c|-i|-I] [-SC SIZE] [-o OUTPUT] FILE\n";
+const I8 *usage_short = "usage: %s [-h|-s|-c|-i] [-SC SIZE] [-o OUTPUT] FILE\n";
 const I8 *usage_long  = "\
-usage: %s [-h|-s|-c|-i|-I] [-SC] [-o OUTPUT] FILE\n\
+usage: %s [-h|-s|-c|-i] [-SC] [-o OUTPUT] FILE\n\
 \t-h\tPrint this message\n\
 \t-s\tProduce 64-bit NASM code instead of an executable.\n\
 \t-c\tProduce an object file instead of an executable (no linking)\n\
 \t-i\tProduce a syntax tree (intermediary representation) for analysis\n\
-\t-I\tInterpret the syntax tree instead of compiling\n\
 \t-S\tSet cell size\n\
 \t-C\tSet amount of cells allocated to program\n\
 \t-o\tSet output file name\n";
@@ -24,8 +23,7 @@ usage: %s [-h|-s|-c|-i|-I] [-SC] [-o OUTPUT] FILE\n\
 #define FLAG_ONLYCOMPILE   1
 #define FLAG_ONLYASSEMBLE (1 << 1)
 #define FLAG_INTERMEDIATE (1 << 2)
-#define FLAG_INTERPRET    (1 << 3)
-#define FLAG_HASOUTFLAG   (1 << 4)
+#define FLAG_HASOUTFLAG   (1 << 3)
 
 I32 main(I32 argc, I8 **argv) {
 	if (argc < 2) {
@@ -37,7 +35,7 @@ I32 main(I32 argc, I8 **argv) {
 	U64 cc, cs = 0;
 	U8  flags = 0;
 	std::string out = "";
-	while ((c = getopt(argc, argv, ":hcsiIC:S:o:")) > -1) {
+	while ((c = getopt(argc, argv, ":hcsiC:S:o:")) > -1) {
 		switch(c) {
 			case 'h': printf(usage_long, argv[0]); return EXIT_SUCCESS;
 			case 'C':
@@ -59,7 +57,6 @@ I32 main(I32 argc, I8 **argv) {
 			case 'c': flags |= FLAG_ONLYCOMPILE;  break;
 			case 's': flags |= FLAG_ONLYASSEMBLE; break;
 			case 'i': flags |= FLAG_INTERMEDIATE; break;
-			case 'I': flags |= FLAG_INTERPRET;    break;
 			case 'o': out = optarg; flags |= FLAG_HASOUTFLAG; break;
 			case '?':
 				printf("%s: unknown option '-%c'\n", argv[0], optopt);
@@ -90,18 +87,6 @@ I32 main(I32 argc, I8 **argv) {
 			b.error.desc.c_str()
 		);
 		return EXIT_FAILURE;
-	}
-	if (flags & FLAG_INTERPRET) {
-		if (b.interp() < 0) {
-			fprintf(stderr, "%s: %s @ %lu %s\n",
-				argv[0],
-				b.error.where.c_str(),
-				b.error.location,
-				b.error.desc.c_str()
-			);
-			return EXIT_FAILURE;
-		}
-		return EXIT_SUCCESS;
 	}
 	if (flags & FLAG_INTERMEDIATE) {
 		if (!(flags & FLAG_HASOUTFLAG))
