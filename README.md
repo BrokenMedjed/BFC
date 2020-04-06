@@ -1,6 +1,6 @@
 # BFC - BrainFuck Compiler
 
-<strong>Coming in with the creative names again, medjed. -r</strong><br />
+<strong>Coming in with the creative names again...</strong><br />
 This is a compiler/translator for Brainfuck, that generates 64-bit NASM code
 (and assembles it for you using NASM if you want). I compiled a [Sierpinski Triangle](http://www.hevanet.com/cristofd/brainfuck/sierpinski.b) and a [Mandelbrot set viewer](https://github.com/ErikDubbelboer/brainfuck-jit/blob/master/mandelbrot.bf);
 both work fine, so I'm assuming it'll work with every program.<br /><br />
@@ -24,7 +24,7 @@ g++ -c bfc.cpp -Wall -std=c++14
 g++ bfc.o main.cpp -Wall -std=c++14 -o bfc
 ```
 I've included my types header in this repo, the reason why I use it is
-that writing "U32" is cleaner than writing "uint32_t" :3<br />
+that writing "U32" is cleaner than writing "uint32_t" ^-^<br />
 
 ## Usage
 Run
